@@ -1,1 +1,0 @@
-alert 'Manda ver!'
