@@ -1,25 +1,63 @@
-<h1>Todos os postssss</h1>
+<section id="news-feed-nav">
+  <div class="welcome-box">
+    <div class="user-avatar">
+      <div class="user-avatar-inner">
+        <img width="40" height="40" src="/assets/user-chuck.jpg" />
+      </div>
+    </div>
+    <div class="user-name">Chuck Norris</div>
+  </div>
+</section>
 
-<table>
-  <tr>
-    <th>Body</th>
-    <th>Image</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<section id="news-feed">
+  <div class="box">
+    <header class="box-header">
+      <%= link_to 'Atualizar Status', new_post_path, class: 'button' %>
+    </header>
+    <div class="box-content">
+      <div class="list-view ui-comments-list">
+        <ul>
+          <% @posts.each do |post| %>
+            <li>
+              <div class="item-image usuario">
+                <span class="item-image-wrap"><img width="40" height="40" src="/assets/user-chuck.jpg" /></span>
+              </div>
+              <div class="item-info">
+                <div class="item-activity">
+                  <div class="user-name">
+                    Chuck Norris
+                  </div>
+                  <div class="user-comment">
+                    <%= simple_format(post.body) %>
+                  </div>
+                  <div class="item-actions">
+                    <span class="action-like">
+                      <a href="#">Curtir</a>
+                    </span>
+                    <span class="action-comment">
+                      <%= link_to 'Comentar', post %>
+                    </span>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.body %></td>
-    <td><%= post.image %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+                    
+                    <span class="action-destroy">
+                      <%= link_to 'Deletar', post, method: :delete, data: { confirm: 'Certeza?' } %>
+                    </span>
 
-<br />
 
-<%= link_to 'New Post', new_post_path %>
+                    <span class="count-likes">
+                      <a>2</a>
+                    </span>
+                    <span class="count-comments">
+                      <a>0</a>
+                    </span>
+                    <span class="timestamp"><%= time_ago_in_words(post.created_at) %> atrás</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
