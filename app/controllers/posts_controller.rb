@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
 
     if @post.save
-      redirect_to @post
+      redirect_to posts_path
     else
       render action: "new"
     end
