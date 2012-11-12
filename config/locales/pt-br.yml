@@ -209,6 +209,8 @@ pt-BR:
     attributes:
       user:
         password: Senha
+      post:
+        body: Comentário
     errors:
       <<: *errors
   views:
