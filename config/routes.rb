@@ -1,4 +1,6 @@
 Fakebook::Application.routes.draw do
+  resources :comments
+
   resources :posts, except: [:edit, :update]
 
   get 'frontend/:template' => 'frontend#show'
